@@ -1,0 +1,78 @@
+class Matrix:
+    def __init__(self, data):
+        self.data = data
+        self.rows = len(data)
+        self.cols = len(data[0])
+
+    def __str__(self):
+        rows = []
+        for row in self.data:
+            rows.append("| " + "  ".join(str(x) for x in row) + " |")
+        return "\n".join(rows)
+
+    def __add__(self, other):
+        if self.rows != other.rows or self.cols != other.cols:
+            raise ValueError("Matrices must be the same size to add!")
+        result = []
+        for i in range(self.rows):
+            row = []
+            for j in range(self.cols):
+                row.append(self.data[i][j] + other.data[i][j])
+            result.append(row)
+        return Matrix(result)
+
+    def __mul__(self, factor):
+        result = []
+        for i in range(self.rows):
+            row = []
+            for j in range(self.cols):
+                row.append(self.data[i][j] * factor)
+            result.append(row)
+        return Matrix(result)
+
+    def __rmul__(self, factor):
+        return self.__mul__(factor)
+
+    def __matmul__(self, other):
+        if self.cols != other.rows:
+            raise ValueError(f"Can't multiply {self.rows}×{self.cols} by {other.rows}×{other.cols}")
+        result = []
+        for i in range(self.rows):
+            row = []
+            for j in range(other.cols):
+                total = 0
+                for k in range(self.cols):
+                    total += self.data[i][k] * other.data[k][j]
+                row.append(total)
+            result.append(row)
+        return Matrix(result)
+
+    def transpose(self):
+        result = []
+        for j in range(self.cols):
+            row = []
+            for i in range(self.rows):
+                row.append(self.data[i][j])
+            result.append(row)
+        return Matrix(result)
+    
+A = Matrix([[1, 2], [3, 4]])
+B = Matrix([[5, 6], [7, 8]])
+
+print("A =")
+print(A)
+
+print("\nB =")
+print(B)
+
+print("\nA + B =")
+print(A + B)
+
+print("\nA * 2 =")
+print(A * 2)
+
+print("\nA @ B =")
+print(A @ B)
+
+print("\nTranspose of A =")
+print(A.transpose())
