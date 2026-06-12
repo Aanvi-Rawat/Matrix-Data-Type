@@ -1,4 +1,4 @@
-from matrix import Matrix
+from matrix_dt import Matrix
 
 # ── Creating Matrices ────────────────────────────────────────
 A = Matrix([[1, 2], [3, 4]])
@@ -41,15 +41,4 @@ print(C)
 print("\nTranspose of C =")
 print(C.transpose())
 
-# ── Identity Matrix ──────────────────────────────────────────
-print("\n3×3 Identity Matrix =")
-print(Matrix.identity(3))
-
-# ── Zero Matrix ──────────────────────────────────────────────
-print("\n2×3 Zero Matrix =")
-print(Matrix.zeros(2, 3))
-
-# ── Equality ─────────────────────────────────────────────────
-X = Matrix([[1, 2], [3, 4]])
-Y = Matrix([[1, 2], [3, 4]])
 print(f"\nAre X and Y equal? {X == Y}")
