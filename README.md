@@ -46,10 +46,6 @@ python examples/basic_usage.py
 | Scalar Multiply | `*` | `A * 3` or `3 * A` |
 | Matrix Multiply | `@` | `A @ B` |
 | Transpose | `.transpose()` | `A.transpose()` |
-| Identity Matrix | `.identity(n)` | `Matrix.identity(3)` |
-| Zero Matrix | `.zeros(r, c)` | `Matrix.zeros(2, 3)` |
-| Size | `.size()` | `A.size()` |
-| Equality | `==` | `A == B` |
 
 ---
 
